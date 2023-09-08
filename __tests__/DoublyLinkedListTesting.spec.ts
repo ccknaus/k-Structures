@@ -158,3 +158,27 @@ describe('DLL: removeFirst, removeLast, removeLast after insertFirst operations'
   });
 });
 
+describe('DLL: isEmpty()', () => {
+  it('returns the expected value', () => {
+    const dll = new DoublyLinkedList<null>(null);
+    expect(dll.isEmpty()).toBe(true);
+  });
+});
+
+describe('DLL: isEmpty()', () => {
+  it('returns the expected value after one null inserts', () => {
+    const dll = new DoublyLinkedList<null>(null);
+    dll.insertFirst(null);
+    expect(dll.isEmpty()).toBe(false);
+  });
+});
+
+describe('DLL: isEmpty()', () => {
+  it('returns the expected value after one null inserts and removal', () => {
+    const dll = new DoublyLinkedList<null>(null);
+    dll.insertFirst(null);
+    expect(dll.isEmpty()).toBe(false);
+    dll.removeFirst()
+    expect(dll.isEmpty()).toBe(true);
+  });
+});

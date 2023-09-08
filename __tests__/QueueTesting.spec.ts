@@ -75,3 +75,27 @@ describe('Queue: enqueue twice and deqeue three times', () => {
     expect(queue.dequeue()).toBe(undefined);
   });
 });
+
+describe('Queue: returns expected value when empty', () => {
+  it('returns true if nothing added', () => {
+    const queue = new Queue<null>();
+    expect(queue.isEmpty()).toBe(true);
+  });
+});
+
+describe('Queue: returns expected value with one element', () => {
+  it('returns true node was added', () => {
+    const queue = new Queue<null>();
+    queue.enqueue(null);
+    expect(queue.isEmpty()).toBe(false);
+  });
+});
+
+describe('Queue: returns expected value with no elements', () => {
+  it('returns true node was added and then removed', () => {
+    const queue = new Queue<null>();
+    queue.enqueue(null);
+    queue.dequeue();
+    expect(queue.isEmpty()).toBe(true);
+  });
+});

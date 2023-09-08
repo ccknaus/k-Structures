@@ -1,16 +1,19 @@
 import { IQueue } from '../Interface/IQueue.ts';
+import { IList } from '../Interface/IList.ts';
 import { SingleNode } from '../Node/SingleNode.ts'
 import { HeadNode } from '../Node/HeadNode.ts'
 
 // FIFO
 
-export class Queue<T> implements IQueue<T> {
+export class Queue<T> implements IQueue<T>, IList<T> {
     private readonly headNode: HeadNode<T>;
     private currentNode!: SingleNode<T>;
+    private readonly value : null | undefined;
 
     constructor(value?: null | undefined ) {
         this.headNode = new HeadNode(value);
-        this.currentNode = this.headNode.linkNode(this.headNode);  
+        this.currentNode = this.headNode.linkNode(this.headNode);
+        this.value = value;
     }
 
     enqueue(element: T): void {
@@ -29,6 +32,10 @@ export class Queue<T> implements IQueue<T> {
 
     peek(): any {
         return this.headNode.getLinkedValue();
+    }
+
+    isEmpty(): boolean {
+        return this.currentNode.getValue() === this.value;
     }
 
 }

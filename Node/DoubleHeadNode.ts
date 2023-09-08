@@ -36,6 +36,8 @@ export class DoubleHeadNode<T> extends DoubleNode<T> implements IDoubleNode<T> {
         return super.getRightNode();
     }
 
+    async destroyNode() { }
+
     async getAndDestroyNode(): Promise<DoubleNode<T>> {
         return this;
     }

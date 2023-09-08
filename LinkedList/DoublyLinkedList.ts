@@ -1,10 +1,11 @@
 import { ILinkedList } from '../Interface/ILinkedList.ts';
+import { IList } from '../Interface/IList.ts';
 import { DoubleNode } from '../Node/DoubleNode.ts'
 import { DoubleHeadNode } from '../Node/DoubleHeadNode.ts'
 
 // FIFO & LIFO
 
-export class DoublyLinkedList<T> implements ILinkedList<T> {
+export class DoublyLinkedList<T> implements ILinkedList<T>, IList<T> {
     private readonly headNode: DoubleNode<T>;
     private firstNode: DoubleNode<T>;
     private lastNode: DoubleNode<T>;
@@ -41,19 +42,13 @@ export class DoublyLinkedList<T> implements ILinkedList<T> {
     }
 
     removeFirst(): T {
-        if(this.isEmpty()) {
-            return this.headNode.getValue();
-        }
-        const result = this.getFirst();
+        const result = this.firstNode.getValue();
         this.firstNode = this.firstNode.replaceRightwise(this.firstNode.getRightNode(), this.headNode);
         return result;
     }
 
     removeLast(): T {
-        if(this.isEmpty()) {
-            return this.headNode.getValue();
-        }
-        const result = this.getLast();
+        const result = this.lastNode.getValue();
         this.lastNode = this.lastNode.replaceLeftwise(this.lastNode.getLeftNode(), this.headNode);
         return result;
     }

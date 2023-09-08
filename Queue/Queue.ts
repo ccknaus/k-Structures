@@ -8,34 +8,45 @@ import { HeadNode } from '../Node/HeadNode.ts'
 export class Queue<T> implements IQueue<T>, IList<T> {
     private readonly headNode: HeadNode<T>;
     private currentNode!: SingleNode<T>;
-    private readonly value : null | undefined;
+    private readonly value: null | undefined;
+    private listSize: number;
 
     constructor(value?: null | undefined ) {
         this.headNode = new HeadNode(value);
         this.currentNode = this.headNode.linkNode(this.headNode);
         this.value = value;
+        this.listSize = 0;
     }
 
     enqueue(element: T): void {
         const nextNode = new SingleNode<T>(element); // await
         this.currentNode.linkNode(nextNode); // await
         this.currentNode = nextNode.linkNode(this.headNode);
+        this.listSize++;
     }
 
-    dequeue(): any {
+    dequeue(): T {
         const firstNode = this.headNode.getLinkedNode();
         const result = firstNode.getValue();
         const secondNode = firstNode.getAndDestroyNode(); // await
         this.headNode.linkNode(secondNode); // await
+        this.currentNode = secondNode;
+        if(this.listSize > 0) {
+            this.listSize--;
+        }
         return result;
     }
 
-    peek(): any {
+    peek(): T {
         return this.headNode.getLinkedValue();
     }
 
     isEmpty(): boolean {
-        return this.currentNode.getValue() === this.value;
+        return this.headNode === this.currentNode;
+    }
+
+    size(): number {
+        return this.listSize;
     }
 
 }

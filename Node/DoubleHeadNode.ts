@@ -18,13 +18,13 @@ export class DoubleHeadNode<T> extends DoubleNode<T> implements IDoubleNode<T> {
         return this;
     }
 
-    getAndUnlinkLeftkNode(): DoubleNode<T> {
-        return super.getAndUnlinkLeftkNode();
-    }
+    // getAndUnlinkLeftkNode(): DoubleNode<T> {
+    //     return super.getAndUnlinkLeftkNode();
+    // }
 
-    getAndUnlinkRightkNode(): DoubleNode<T> {
-        return super.getAndUnlinkRightkNode();
-    }
+    // getAndUnlinkRightkNode(): DoubleNode<T> {
+    //     return super.getAndUnlinkRightkNode();
+    // }
 
     getLeftNode(): DoubleNode<T> {
         // carefull, no guarantee!
@@ -37,10 +37,6 @@ export class DoubleHeadNode<T> extends DoubleNode<T> implements IDoubleNode<T> {
     }
 
     async destroyNode() { }
-
-    async getAndDestroyNode(): Promise<DoubleNode<T>> {
-        return this;
-    }
 
     getValue(): T {
         return super.getValue();

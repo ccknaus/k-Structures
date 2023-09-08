@@ -6,9 +6,9 @@ export interface IDoubleNode<T> {
 
     linkRightNode(node: DoubleNode<T>): DoubleNode<T>;
 
-    getAndUnlinkLeftkNode(): DoubleNode<T>;
+    // getAndUnlinkLeftkNode(): DoubleNode<T>;
 
-    getAndUnlinkRightkNode(): DoubleNode<T>;
+    // getAndUnlinkRightkNode(): DoubleNode<T>;
 
     getValue(): T;
 

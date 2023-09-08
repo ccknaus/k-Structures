@@ -39,34 +39,34 @@ export class DoubleNode<T> implements IDoubleNode<T> {
         this.linkedRightNode = undefined; 
     }
 
-    async getAndDestroyNode(): Promise<DoubleNode<T>> {
-        this.value = undefined;
-        this.linkedLeftNode = undefined;
-        this.linkedRightNode = undefined;
-        return this;
-    }
+    // async getAndDestroyNode(): Promise<DoubleNode<T>> {
+    //     this.value = undefined;
+    //     this.linkedLeftNode = undefined;
+    //     this.linkedRightNode = undefined;
+    //     return this;
+    // }
 
-    async getAndDestroyNodeButLeftNode(): Promise<void> {
-        this.value = undefined;
-        this.linkedRightNode = undefined;
-    }
+    // async getAndDestroyNodeButLeftNode(): Promise<void> {
+    //     this.value = undefined;
+    //     this.linkedRightNode = undefined;
+    // }
 
-    async getAndDestroyNodeButRightNode(): Promise<void> {
-        this.value = undefined;
-        this.linkedLeftNode = undefined;
-    }
+    // async getAndDestroyNodeButRightNode(): Promise<void> {
+    //     this.value = undefined;
+    //     this.linkedLeftNode = undefined;
+    // }
 
-    destroyAndGetLeftNode(): DoubleNode<T> {
-        const result = this.linkedLeftNode;
-        this.linkedLeftNode = undefined;
-        return result as DoubleNode<T>;
-    }
+    // destroyAndGetLeftNode(): DoubleNode<T> {
+    //     const result = this.linkedLeftNode;
+    //     this.linkedLeftNode = undefined;
+    //     return result as DoubleNode<T>;
+    // }
 
-    destroyAndGetRightNode(): DoubleNode<T> {
-        const result = this.linkedRightNode;
-        this.linkedRightNode = undefined;
-        return result as DoubleNode<T>;
-    }
+    // destroyAndGetRightNode(): DoubleNode<T> {
+    //     const result = this.linkedRightNode;
+    //     this.linkedRightNode = undefined;
+    //     return result as DoubleNode<T>;
+    // }
 
     linkLeftNode(node: DoubleNode<T>): DoubleNode<T> {
         this.linkedLeftNode = node;
@@ -78,27 +78,27 @@ export class DoubleNode<T> implements IDoubleNode<T> {
         return this;
     }
 
-    BilinkRightNode(node: DoubleNode<T>): DoubleNode<T> {
-        this.linkedRightNode = node;
-        node.linkedLeftNode = this;
-        return this;
-    }
+    // BilinkRightNode(node: DoubleNode<T>): DoubleNode<T> {
+    //     this.linkedRightNode = node;
+    //     node.linkedLeftNode = this;
+    //     return this;
+    // }
 
-    getAndUnlinkLeftkNode(): DoubleNode<T> {
-        const node = this.linkedLeftNode as DoubleNode<T>;
-        this.linkedLeftNode = undefined;
-        this.linkedRightNode = undefined;
-        this.value = undefined;
-        return node;
-    }
+    // getAndUnlinkLeftkNode(): DoubleNode<T> {
+    //     const node = this.linkedLeftNode as DoubleNode<T>;
+    //     this.linkedLeftNode = undefined;
+    //     this.linkedRightNode = undefined;
+    //     this.value = undefined;
+    //     return node;
+    // }
 
-    getAndUnlinkRightkNode(): DoubleNode<T> {
-        const node = this.linkedRightNode as DoubleNode<T>;
-        this.linkedLeftNode = undefined;
-        this.linkedRightNode = undefined;
-        this.value = undefined;
-        return node;
-    }
+    // getAndUnlinkRightkNode(): DoubleNode<T> {
+    //     const node = this.linkedRightNode as DoubleNode<T>;
+    //     this.linkedLeftNode = undefined;
+    //     this.linkedRightNode = undefined;
+    //     this.value = undefined;
+    //     return node;
+    // }
 
     getLeftNode(): DoubleNode<T> {
         // carefull, no guarantee!

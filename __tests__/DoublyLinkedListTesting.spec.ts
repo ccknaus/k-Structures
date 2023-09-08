@@ -1,4 +1,6 @@
+import { DoublyLinkedListHelper } from "../TestHelper/DoublyLinkedListHelper";
 import { DoublyLinkedList } from "../LinkedList/DoublyLinkedList";
+import { DoubleNode } from "../Node/DoubleNode";
 
 describe('DLL: constructor default value', () => {
   it('returns the expected value for constructor', () => {
@@ -180,5 +182,120 @@ describe('DLL: isEmpty()', () => {
     expect(dll.isEmpty()).toBe(false);
     dll.removeFirst()
     expect(dll.isEmpty()).toBe(true);
+  });
+});
+
+describe('DLL: isNodeElement)', () => {
+  it('has value on head', () => {
+    const dll = new DoublyLinkedListHelper<null>(null);
+    expect(dll.isNodeValue(dll.getFirstNode(), null)).toBe(true);
+  });
+});
+
+describe('DLL: isNodeElement)', () => {
+  it('has wrong value on head', () => {
+    const dll = new DoublyLinkedListHelper<undefined>(null);
+    expect(dll.isNodeValue(dll.getFirstNode(), undefined)).toBe(false);
+  });
+});
+
+describe('DLL: isNodeElement)', () => {
+  it('has three nodes with one correct element', () => {
+    const dll = new DoublyLinkedListHelper<number>(null);
+    dll.insertFirst(3);
+    dll.insertFirst(2);
+    dll.insertFirst(1);
+    expect(dll.isNodeValue(dll.getFirstNode(), 1)).toBe(true);
+  });
+});
+
+describe('DLL: isNodeElement)', () => {
+  it('has node with complex element', () => {
+    const dll = new DoublyLinkedListHelper<DoubleNode<null>>(null);
+    const node = new DoubleNode<null>(null);
+    dll.insertFirst(new DoubleNode<null>(null));
+    expect(dll.isNodeValue(dll.getFirstNode(), node)).toBe(true);
+  });
+});
+
+describe('DLL: remove)', () => {
+  it('remove given element on head node', () => {
+    const dll = new DoublyLinkedList<null>(null);
+    expect(dll.remove(null)).toBe(false);
+  });
+});
+
+describe('DLL: remove)', () => {
+  it('remove given element with one node', () => {
+    const dll = new DoublyLinkedList<null>(null);
+    dll.insertFirst(null);
+    expect(dll.remove(null)).toBe(true);
+  });
+});
+
+describe('DLL: remove)', () => {
+  it('remove given elements with two nodes', () => {
+    const dll = new DoublyLinkedList<null>(null);
+    dll.insertFirst(null);
+    dll.insertFirst(null);
+    expect(dll.remove(null)).toBe(true);
+    expect(dll.remove(null)).toBe(true);
+    expect(dll.remove(null)).toBe(false);
+  });
+});
+
+describe('DLL: remove)', () => {
+  it('remove given elements with three nodes', () => {
+    const dll = new DoublyLinkedList<number>(null);
+    dll.insertFirst(0);
+    dll.insertFirst(1);
+    dll.insertFirst(2);
+    expect(dll.remove(2)).toBe(true);
+    expect(dll.remove(0)).toBe(true);
+    expect(dll.remove(1)).toBe(true);
+  });
+});
+
+describe('DLL: size)', () => {
+  it('insert one element', () => {
+    const dll = new DoublyLinkedList<number>(null);
+    dll.insertFirst(0);
+    expect(dll.size()).toBe(1);
+  });
+});
+
+describe('DLL: size)', () => {
+  it('remove no element', () => {
+    const dll = new DoublyLinkedList<number>(null);
+    dll.remove(0);
+    expect(dll.size()).toBe(0);
+  });
+});
+
+describe('DLL: size)', () => {
+  it('insert and remove wrong element', () => {
+    const dll = new DoublyLinkedList<number>(null);
+    dll.insertFirst(1);
+    dll.remove(0);
+    expect(dll.size()).toBe(1);
+  });
+});
+
+describe('DLL: size)', () => {
+  it('insert and remove element', () => {
+    const dll = new DoublyLinkedList<number>(null);
+    dll.insertFirst(1);
+    dll.remove(1);
+    expect(dll.size()).toBe(0);
+  });
+});
+
+describe('DLL: size)', () => {
+  it('remove operations on empty list returns 0', () => {
+    const dll = new DoublyLinkedList<null>(null);
+    dll.remove(null);
+    dll.removeFirst();
+    dll.removeLast();
+    expect(dll.size()).toBe(0);
   });
 });

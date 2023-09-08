@@ -83,3 +83,19 @@ describe('Stack: return false if elements are pushed, then removed', () => {
     expect(stack.isEmpty()).toBe(true);
   });
 });
+
+describe('Stack: size() zero on empty pop', () => {
+  it('returns boolean', () => {
+    const stack = new Stack<null>();
+    stack.pop();
+    expect(stack.size()).toBe(0);
+  });
+});
+
+describe('Stack: size() one after pop', () => {
+  it('returns boolean', () => {
+    const stack = new Stack<null>();
+    stack.push(null);
+    expect(stack.size()).toBe(1);
+  });
+});

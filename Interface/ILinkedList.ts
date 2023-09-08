@@ -8,4 +8,10 @@ export interface ILinkedList<T> {
 
     getLast(): T;
 
+    removeFirst(): T;
+
+    removeLast(): T;
+
+    remove(element: T): boolean;
+
 }

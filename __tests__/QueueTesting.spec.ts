@@ -69,8 +69,31 @@ describe('Queue: enqueue twice and deqeue three times', () => {
   it('returns the expected value deque', () => {
     const queue = new Queue<number>();
     queue.enqueue(1);
+    expect(queue.peek()).toBe(1);
     queue.enqueue(2);
     expect(queue.dequeue()).toBe(1);
+    expect(queue.dequeue()).toBe(2);
+    expect(queue.dequeue()).toBe(undefined);
+  });
+});
+
+describe('Queue: enqueue / dequeue chaos testing', () => {
+  it('returns the expected values on every step', () => {
+    const queue = new Queue<number>();
+    queue.enqueue(1);
+    expect(queue.dequeue()).toBe(1);
+    expect(queue.dequeue()).toBe(undefined);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    expect(queue.dequeue()).toBe(2);
+    expect(queue.dequeue()).toBe(3);
+    expect(queue.dequeue()).toBe(undefined);
+    queue.enqueue(1);
+    expect(queue.peek()).toBe(1);
+    queue.enqueue(2);
+    expect(queue.dequeue()).toBe(1);
+    queue.enqueue(2)
+    expect(queue.dequeue()).toBe(2);
     expect(queue.dequeue()).toBe(2);
     expect(queue.dequeue()).toBe(undefined);
   });
@@ -96,6 +119,25 @@ describe('Queue: returns expected value with no elements', () => {
     const queue = new Queue<null>();
     queue.enqueue(null);
     queue.dequeue();
+    expect(queue.isEmpty()).toBe(true);
+  });
+});
+
+describe('Queue: size() returns expected size with chaos testing', () => {
+  it('returns 1 if one element was added', () => {
+    const queue = new Queue<null>();
+    queue.dequeue(); // 0
+    expect(queue.size()).toBe(0);
+    queue.enqueue(null); // 1
+    expect(queue.size()).toBe(1);
+    queue.enqueue(null); // 2
+    expect(queue.size()).toBe(2);
+    queue.dequeue(); // 1
+    expect(queue.size()).toBe(1);
+    queue.dequeue(); // 0
+    expect(queue.size()).toBe(0);
+    queue.dequeue(); // 0
+    expect(queue.size()).toBe(0);
     expect(queue.isEmpty()).toBe(true);
   });
 });

@@ -272,6 +272,15 @@ describe('DLL: size)', () => {
   });
 });
 
+describe('DLL: removeNode()', () => {
+  it('remove nodes', () => {
+    const dll = new DoublyLinkedListHelper<number>(null);
+    const head = dll.getFirstNode();
+    expect(dll.removeNode(head)).toBe(null);
+    expect(dll.size()).toBe(0);
+  });
+});
+
 describe('DLL: size)', () => {
   it('insert and remove wrong element', () => {
     const dll = new DoublyLinkedList<number>(null);
@@ -285,7 +294,8 @@ describe('DLL: size)', () => {
   it('insert and remove element', () => {
     const dll = new DoublyLinkedList<number>(null);
     dll.insertFirst(1);
-    dll.remove(1);
+    expect(dll.size()).toBe(1);
+    expect(dll.remove(1)).toBe(true);
     expect(dll.size()).toBe(0);
   });
 });
@@ -297,5 +307,98 @@ describe('DLL: size)', () => {
     dll.removeFirst();
     dll.removeLast();
     expect(dll.size()).toBe(0);
+  });
+});
+
+describe('DLL: find()', () => {
+  it('find node on head', () => {
+    const dll = new DoublyLinkedListHelper<null>(null);
+    expect(dll.find(null)).toBe(dll.getFirstNode());
+  });
+});
+
+describe('DLL: find()', () => {
+  it('find node on third node', () => {
+    const dll = new DoublyLinkedListHelper<number>(null);
+    dll.insertFirst(1);
+    expect(dll.find(1)).toBe(dll.getLastNode());
+  });
+});
+
+describe('DLL: find()', () => {
+  it('find node on third node', () => {
+    const dll = new DoublyLinkedListHelper<number>(null);
+    dll.insertFirst(1);
+    dll.insertFirst(2);
+    dll.insertFirst(3);
+    expect(dll.find(1)).toBe(dll.getLastNode());
+  });
+});
+
+describe('DLL: findAt()', () => {
+  it('find node in empty list', () => {
+    const dll = new DoublyLinkedListHelper<number>(null);
+    expect(dll.findAt(-1)).toBe(dll.getLastNode());
+    expect(dll.findAt(0)).toBe(dll.getLastNode());
+  });
+});
+
+describe('DLL: findAt()', () => {
+  it('find first node', () => {
+    const dll = new DoublyLinkedListHelper<null>(null);
+    dll.insertFirst(null);
+    expect(dll.findAt(0)).toBe(dll.getLastNode());
+  });
+});
+
+describe('DLL: findAt()', () => {
+  it('find respective nodes', () => {
+    const dll = new DoublyLinkedListHelper<number>(null);
+    const head = dll.getLastNode();
+    dll.insertFirst(1);
+    const firstNode = dll.getFirstNode();
+    dll.insertFirst(2);
+    const secondNode = dll.getFirstNode();
+    dll.insertFirst(3);
+    const thirdNode = dll.getFirstNode();
+    expect(dll.findAt(-1)).toBe(head);
+    expect(dll.findAt(0)).toBe(thirdNode);
+    expect(dll.findAt(1)).toBe(secondNode);
+    expect(dll.findAt(2)).toBe(firstNode);
+    expect(dll.findAt(3)).toBe(head);
+  });
+});
+
+describe('DLL: removeAt()', () => {
+  it('insert nodes, then removeAt', () => {
+    const dll = new DoublyLinkedListHelper<number>(undefined);
+    expect(dll.removeAt(-1)).toBe(undefined);
+    expect(dll.removeAt(0)).toBe(undefined);
+    expect(dll.removeAt(1)).toBe(undefined);
+    dll.insertFirst(1);
+    dll.insertFirst(2);
+    dll.insertFirst(3);
+    expect(dll.removeAt(2)).toBe(1);
+    expect(dll.removeAt(1)).toBe(2);
+    expect(dll.removeAt(0)).toBe(3);
+    expect(dll.removeAt(0)).toBe(undefined);
+  });
+});
+
+describe('DLL: insertAt()', () => {
+  it('insertAt node, then removeAt', () => {
+    const dll = new DoublyLinkedListHelper<number>(undefined);
+    expect(dll.insertAt(0, -1)).toBe(0);
+    expect(dll.insertAt(2, 10)).toBe(1);
+    expect(dll.insertAt(4, 2)).toBe(2);
+    expect(dll.insertAt(1, 1)).toBe(1);
+    expect(dll.insertAt(3, 3)).toBe(3);
+    expect(dll.findAt(0).getValue()).toBe(0);
+    expect(dll.findAt(1).getValue()).toBe(1);
+    expect(dll.findAt(2).getValue()).toBe(2);
+    expect(dll.findAt(3).getValue()).toBe(3);
+    expect(dll.findAt(4).getValue()).toBe(4);
+    expect(dll.findAt(5).getValue()).toBe(undefined);
+    expect(dll.findAt(-1).getValue()).toBe(undefined);
   });
 });

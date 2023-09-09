@@ -1,7 +1,7 @@
-import { ILinkedList } from '../Interface/ILinkedList.ts';
-import { IList } from '../Interface/IList.ts';
-import { DoubleNode } from '../Node/DoubleNode.ts'
-import { DoubleHeadNode } from '../Node/DoubleHeadNode.ts'
+import { ILinkedList } from '../Interface/ILinkedList';
+import { IList } from '../Interface/IList';
+import { DoubleNode } from '../Node/DoubleNode';
+import { DoubleHeadNode } from '../Node/DoubleHeadNode';
 import * as _ from 'lodash';
 
 // FIFO & LIFO

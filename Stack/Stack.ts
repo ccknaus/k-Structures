@@ -1,7 +1,7 @@
-import { IStack } from '../Interface/IStack.ts';
-import { IList } from '../Interface/IList.ts';
-import { SingleNode } from '../Node/SingleNode.ts';
-import { GuardNode } from '../Node/GuardNode.ts';
+import { IStack } from '../Interface/IStack';
+import { IList } from '../Interface/IList';
+import { SingleNode } from '../Node/SingleNode';
+import { GuardNode } from '../Node/GuardNode';
 
 // LIFO
 
@@ -23,7 +23,7 @@ export class Stack<T> implements IStack<T>, IList<T> {
         this.listSize++;
     }
 
-    pop(): any {
+    pop(): T {
         const result: T = this.topNode.getValue();
         this.topNode = this.topNode.getAndDestroyNode();
         if(this.listSize > 0) {

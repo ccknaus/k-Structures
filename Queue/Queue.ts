@@ -1,7 +1,7 @@
-import { IQueue } from '../Interface/IQueue.ts';
-import { IList } from '../Interface/IList.ts';
-import { SingleNode } from '../Node/SingleNode.ts'
-import { HeadNode } from '../Node/HeadNode.ts'
+import { IQueue } from '../Interface/IQueue';
+import { IList } from '../Interface/IList';
+import { SingleNode } from '../Node/SingleNode';
+import { HeadNode } from '../Node/HeadNode';
 
 // FIFO
 

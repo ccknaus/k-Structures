@@ -1,5 +1,5 @@
-import { DoubleNode } from '../Node/DoubleNode.ts'
-import { DoublyLinkedList } from '../LinkedList/DoublyLinkedList.ts'
+import { DoubleNode } from '../Node/DoubleNode';
+import { DoublyLinkedList } from '../LinkedList/DoublyLinkedList';
 
 // FIFO & LIFO
 
